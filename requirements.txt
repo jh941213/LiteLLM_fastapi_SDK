@@ -1,0 +1,12 @@
+litellm
+openai
+fastapi
+uvicorn
+gunicorn
+pydantic
+pydantic-settings
+python-dotenv
+
+
+# google-cloud-aiplatform # GCP vertex_ai
+# google-generativeai # google ai studio

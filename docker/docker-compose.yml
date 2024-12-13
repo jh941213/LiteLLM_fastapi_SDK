@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  ai-api:
+    build:
+      context: .  # 빌드 컨텍스트는 현재 디렉토리
+      dockerfile: docker/Dockerfile  # 사용할 Dockerfile 지정
+    ports:  # 포트 매핑
+      - "8000:8000"  # 호스트:컨테이너 포트 매핑
+    volumes:  # 볼륨 설정
+      - ./app:/app  # 로컬 app 디렉토리를 컨테이너의 /app에 마운트
+    environment:  # 환경변수 설정
+      - PYTHONUNBUFFERED=1  # Python 로그 버퍼링 비활성화
+    restart: unless-stopped  # 컨테이너 재시작 정책
+    # healthcheck:  # 헬스체크 설정
+    #   test: ["CMD", "curl", "-f", "http://localhost:8000/health"]  # 상태 확인 명령어
+    #   interval: 30s  # 검사 주기
+    #   timeout: 10s  # 타임아웃 시간
+    #   retries: 3  # 재시도 횟수
